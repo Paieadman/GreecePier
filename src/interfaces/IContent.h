@@ -1,6 +1,8 @@
 #pragma once
 
+#include "Specification.h"
+
 class IContent {
 public:
-    virtual Content getContent() = 0;
+    virtual std::shared_ptr<ContentType> getContent() = 0;
 };

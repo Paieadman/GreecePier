@@ -15,14 +15,20 @@ ShipGenerator::~ShipGenerator() {
     std::cout << "ShipGenerator destroyed" << std::endl;
 }
 
-Ship* ShipGenerator::createShip(CapacityType capacity) {
-    return new Ship(capacity);
+std::shared_ptr<ShipGenerator> ShipGenerator::getInstance() {
+    static std::shared_ptr<ShipGenerator> instance = std::make_shared<ShipGenerator>();
+    return instance;
+}
+
+std::unique_ptr<Ship> ShipGenerator::createShip(CapacityType capacity, ContentType content) {
+    return std::make_unique<Ship>(capacity, content);
 }
 
 //TODO add 
-Ship* ShipGenerator::createRandomShip() {
+std::unique_ptr<Ship> ShipGenerator::createRandomShip() {
     CapacityType capacity = getRandomCapacity();
-    return createShip(capacity);
+    ContentType content = getRandomContent();
+    return createShip(capacity, content);
 }
 
 //TODO make it random
