@@ -1,0 +1,24 @@
+#pragma once
+#include <queue>
+#include <mutex>
+
+#include "ICapacity.h"
+#include "IContent.h"
+
+template <class T>
+class TQueue {
+private:
+    std::queue<T> m_queue;
+    std::mutex m_mutex;
+public:
+    TQueue();
+    virtual ~TQueue();
+
+    TQueue(const TQueue&) = delete;
+    TQueue(const TQueue&&) = delete;
+    TQueue& operator=(const TQueue&) = delete;
+    TQueue& operator=(const TQueue&&) = delete;
+
+    bool addElement(T item);
+    T takeElement(ICapacity&, IContent&);
+};

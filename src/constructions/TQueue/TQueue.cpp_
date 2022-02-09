@@ -1,0 +1,23 @@
+#include <queue>
+
+#include "TQueue.h"
+
+template<class T>
+TQueue<T>::TQueue() {
+    //m_queue = std::queue<T>();
+}
+
+template<class T>
+TQueue<T>::~TQueue() {
+
+}
+
+template<class T>
+bool TQueue<T>::addElement(T item) {
+    return true;
+}
+
+template<class T>
+T TQueue<T>::takeElement(ICapacity& capacity, IContent& content) {
+    return m_queue.front();
+}
